@@ -1,0 +1,16 @@
+.seconds-counter {
+    background-color: black;
+    color: white;
+    font-size:xx-large;
+    padding: 50px;
+    margin-top: 50px;
+    
+}
+
+@font-face {
+  font-family: 'MiFuente';
+  src: url('https://www.dafont.com/es/blade-runner-movie-font.font') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+

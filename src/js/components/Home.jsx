@@ -1,40 +1,33 @@
-import React, { useState } from "react";
+import SecondsCounter from "./SecondsCounter"
+import { useState, useEffect } from "react"
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
 
-//create your first component
 const Home = () => {
+	const [seconds, setSeconds] = useState(0)
 
-	
-	const [numero, setNumero] = useState(0)
-	const aumentarNumero = () => {
-		setNumero(numero+1)
-	
+	let intervalId = null
+	useEffect(() => {
+		intervalId = setInterval(() => {
+			setSeconds(prev => prev + 1)
+		}, 1000);
+
+		// Limpiar el intervalo cuando el componente se desmonte
+		return () => clearInterval(intervalId);
+	}, []);
+
+	const reiniciarSegundero =() => {
+		setSeconds(0)
 	}
-
-
-
-
-setInterval(function () {element.innerHTML += "Hello"}, 1000);
-
-
-
-
-
-
-	const interval = setInterval(aumentarNumero, 500)
-	setInterval(function (){aumentarNumero += })
 	return (
-		<div className="text-center">
-           {numero}
-			<button onClick={aumentarNumero}>Cambiar número</button>
 
-			
+		<div className="d-flex justify-content-center">
+			{/* <h1>La variable second tiene el valor: {seconds}</h1>*/}
+			<SecondsCounter counter={seconds}/>
+			<button className="btn btn-outline-secondary col-1 rounded-5" onClick={reiniciarSegundero}>Reiniciar<br/>segundero
+			</button>
 		</div>
-	);
-};
-
-
-
+	)
+}
 export default Home;
+
+
